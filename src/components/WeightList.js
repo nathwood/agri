@@ -55,6 +55,7 @@ const WeightList = ( {
                     <>
                         {weight} kg {" "}
                         <button onClick={() => handleEdit(index)}>Edit</button>
+                        {" "}
                         <button onClick={() => deleteWeight(index)}>Delete</button>
                     </>
                     )}
