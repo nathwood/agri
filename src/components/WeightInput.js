@@ -3,14 +3,18 @@ import React, { useState } from 'react';
 const WeightInput = ({ addWeight }) => {
     const [inputValue, setInputValue] = useState('');
 
+    // Handle submit functionality
     const handleSubmit = (e) => {
         e.preventDefault();
         const formattedValue = parseFloat(inputValue).toFixed(2);
 
+        // Input validation
         if (!isNaN(formattedValue) && inputValue !== '') {
             addWeight(formattedValue);
             setInputValue('');
-        } else {
+        } 
+        // Error prompt
+        else {
             alert('Please enter a valid number');
         }
     };
