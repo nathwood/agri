@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import WeightInput from './components/WeightInput';
+import WeightList from './components/WeightList';
 
 function App() {
 
@@ -20,12 +21,20 @@ function App() {
     localStorage.setItem('weights', JSON.stringify(updatedWeights));
   }
 
+  // Function to update weight items
+  const updateWeight = (index, newWeight) => {
+    const updatedWeights = weights.map((weight, i) => (i === index ? newWeight : weight));
+    setWeights(updatedWeights);
+    localStorage.setItem('weights', JSON.stringify(updatedWeights));
+  };
+
   return (
     <div className="App">
 
       <h1>AgriSpark Weight Tracker</h1>
       <h2>User: Ahmad</h2>
       <WeightInput addWeight = {addWeight} />
+      <WeightList weights = {weights} updateWeight = {updateWeight} />
 
     </div>
   );
