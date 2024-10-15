@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
-const WeightList = ( { weights, updateWeight } ) => {
+const WeightList = ( { 
+    weights, 
+    updateWeight,
+    deleteWeight,
+    clearAll
+} ) => {
     
     // State values
     const [editableIndex, setEditableIndex] = useState(null);
@@ -28,33 +33,42 @@ const WeightList = ( { weights, updateWeight } ) => {
     };
 
     return (
-        <ul>
-            {weights.map((weight, index) => (
-                <li key={index}>
-                {editableIndex === index ? 
-                // Update button
-                (
-                  <>
-                    <input
-                      type="number"
-                      step="0.01"
-                      value={editValue}
-                      onChange={(e) => setEditValue(e.target.value)}
-                    />
-                    <button onClick={() => handleUpdate(index)}>Update</button>
-                  </>
-                ) : 
-                // Edit button
-                (
-                  <>
-                    {weight} kg {" "}
-                    <button onClick={() => handleEdit(index)}>Edit</button>
-                  </>
-                )}
-              </li>
-            ))}
-        </ul>
-    )
-}
+        <div>
+            <ul>
+                {weights.map((weight, index) => (
+                    <li key={index}>
+                    {editableIndex === index ? 
+                    // Update button
+                    (
+                    <>
+                        <input
+                        type="number"
+                        step="0.01"
+                        value={editValue}
+                        onChange={(e) => setEditValue(e.target.value)}
+                        />
+                        <button onClick={() => handleUpdate(index)}>Update</button>
+                    </>
+                    ) : 
+                    // Edit and delete button
+                    (
+                    <>
+                        {weight} kg {" "}
+                        <button onClick={() => handleEdit(index)}>Edit</button>
+                        <button onClick={() => deleteWeight(index)}>Delete</button>
+                    </>
+                    )}
+                </li>
+                ))}
+            </ul>
+            {weights.length > 0 && (
+                // Clear all button
+                <button onClick={clearAll} style={{ marginTop: '20px', color: 'red' }}>
+                Clear All
+                </button>
+            )}
+        </div>
+    );
+};
 
 export default WeightList;

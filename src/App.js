@@ -28,13 +28,31 @@ function App() {
     localStorage.setItem('weights', JSON.stringify(updatedWeights));
   };
 
+  // Function to delete weight items
+  const deleteWeight = (index) => {
+    const updatedWeights = weights.filter((_, i) => i !== index);
+    setWeights(updatedWeights);
+    localStorage.setItem('weights', JSON.stringify(updatedWeights));
+  };
+
+  // Function to clear entire list
+  const clearAll = () => {
+    setWeights([]);
+    localStorage.removeItem('weights');
+  }
+
   return (
     <div className="App">
 
       <h1>AgriSpark Weight Tracker</h1>
       <h2>User: Ahmad</h2>
       <WeightInput addWeight = {addWeight} />
-      <WeightList weights = {weights} updateWeight = {updateWeight} />
+      <WeightList 
+        weights = {weights} 
+        updateWeight = {updateWeight} 
+        deleteWeight = {deleteWeight}
+        clearAll={clearAll}
+      />
 
     </div>
   );
