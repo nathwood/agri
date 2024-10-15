@@ -56,7 +56,6 @@ function App() {
   return (
     <div className="App">
       <h1>AgriSpark Weight Tracker</h1>
-      <h3>User: Ahmad</h3>
       <WeightInput addWeight = {addWeight} />
       <WeightList 
         weights = {weights} 
@@ -65,6 +64,7 @@ function App() {
         clearAll = {clearAll}
       />
       <h2>Total: {total} kg</h2>
+      <h4>Developed by Nathan</h4>
     </div>
   );
 }

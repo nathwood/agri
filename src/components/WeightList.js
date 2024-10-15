@@ -64,8 +64,8 @@ const WeightList = ( {
             </ul>
             {weights.length > 0 && (
                 // Clear all button
-                <button onClick={clearAll} style={{ marginTop: '20px', color: 'red' }}>
-                Clear All
+                <button onClick={clearAll} style={{ marginTop: '20px' }}>
+                New List
                 </button>
             )}
         </div>
